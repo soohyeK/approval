@@ -32,9 +32,14 @@
 		<level value="info" />
 	</logger>
 
+	<!--디버그, 아래 Root Logger value를 debug로 바꾸기 -->
+	<logger name="java.sql">
+	<level value="debug" />
+	</logger>
+
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	

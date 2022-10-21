@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="mapper">
-
+<mapper namespace ="appro">
+	
+	<resultMap type="com.study.project.dto.MemberDTO" id="memberList">
+		<result column="MEMBER_ID" 	property="memberId"/>
+		<result column="MEMBER_PW" 	property="memberPw"/>
+		<result column="MEMBER_NAME" property="memberName"/>
+		<result column="MEMBER_RANK" property="memberRank"/>
+	</resultMap>
+	
+	<resultMap type="com.study.project.dto.BoardDTO" id="boardList">
+		<result column="BOARD_NO" property="boardNo"/>
+		<result column="BOARD_TITLE" property="boardTitle"/>
+		<result column="BOARD_REG_DATE" property="boardRegDate"/>
+		<result column="BOARD_SIGN_DATE" property="boardSignDate"/>
+		<result column="BOARD_APPROVER" property="boardApprover"/>
+		<result column="BOARD_SIGN_STATUS" property="boardSignStatus"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="BOARD_CONTENT" property="boardContent"/>
+		<collection property="memberDTO" resultMap="memberList"/>
+	</resultMap>
+	
+	
+	<select id="userCheck"  parameterType="String" resultType="int">
+		select COUNT(*)
+		from SOO_MEMBER
+		where MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="userPw" parameterType="com.study.project.dto.MemberDTO" resultType="int">
+		select COUNT(*)
+		from SOO_MEMBER
+		where MEMBER_ID = #{memberId} and MEMBER_PW = #{memberPw}
+	</select>
+	
+	<select id="loginChk"  parameterType="com.study.project.dto.MemberDTO" resultMap="memberList">
+		select MEMBER_ID
+			  ,MEMBER_PW
+			  ,MEMBER_NAME
+			  ,(CASE WHEN MEMBER_RANK = 'aa' THEN '부장' 
+                    WHEN MEMBER_RANK = 'bb' THEN '과장'
+                    WHEN MEMBER_RANK = 'cc' THEN '대리'
+                    WHEN MEMBER_RANK = 'dd' THEN '사원'
+               END) MEMBER_RANK
+		from SOO_MEMBER
+		where MEMBER_ID = #{memberId} and MEMBER_PW = #{memberPw}
+	</select>
+	
+	<select id="seq" resultType="integer">
+		SELECT 
+			nvl(max(BOARD_NO),0)+1 
+		FROM SOO_BOARD
+	</select>
+	
+	<insert id="insertBoard" parameterType="com.study.project.dto.BoardDTO">
+		
+		insert into SOO_BOARD(
+			BOARD_NO
+		   ,MEMBER_ID
+		   ,BOARD_TITLE
+		   ,BOARD_REG_DATE
+		   ,BOARD_SIGN_STATUS
+		   ,BOARD_CONTENT
+		)values(
+			#{seq}
+			,#{memberId}
+			,#{boardTitle}
+			,sysdate
+			,'NOSIGN'
+			,#{boardContent}
+		)
+	</insert>
+	
+	
+	
 </mapper>
