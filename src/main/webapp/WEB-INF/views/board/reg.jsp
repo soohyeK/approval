@@ -11,10 +11,14 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
-	$(function(){
-		int id = session.setAttribute("memberId", value);
+
 	
+
+	$(function(){
 		
+		
+			
+		})
 	})
 	
 </script>
@@ -47,7 +51,7 @@
 				<tr>
 					<th>작성자</th>
 					<td>
-						<input type = "text" name = "memberName" id = "memberName" value = "${memberName}" readonly="readonly">
+						<input type = "text" name = "memberName" id = "memberName" value = "${detailMap.memberName }" readonly="readonly">
 					</td>
 				</tr>
 				<tr>
@@ -69,6 +73,27 @@
 		<input type = "button" name = "appBtn" id = "appBtn" value = "결재">
 	</div>
 		
+		
+		
+	<div>
+		<table border = "1">
+			<tr>
+				<th>번호</th>
+				<th>결재일</th>
+				<th>결재자</th>
+				<th>결재상태</th>
+			</tr>
+			<c:forEach items="${appHistory }" var = "his">
+				<tr> 
+					<td>${his.boardNo }</td>
+					<td>${his.boardSignDate}</td>
+					<td>${his.boardApprover }</td>
+					<td>${his.boardSignStatus }</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+	
 
 </body>
 </html>

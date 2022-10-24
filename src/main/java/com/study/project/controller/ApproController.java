@@ -57,12 +57,10 @@ public class ApproController {
 	
 	
 	@RequestMapping("reg")
-	public String reg(Model model) {
+	public String reg(@ModelAttribute MemberDTO dto, HttpSession session, Model model) {
 		
 		int seq = approService.Seq();
 		model.addAttribute("seq", seq);
-		
-		
 		
 		return "board/reg";
 	}
