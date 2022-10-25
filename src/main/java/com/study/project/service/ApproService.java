@@ -1,5 +1,7 @@
 package com.study.project.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import com.study.project.dto.BoardDTO;
@@ -11,11 +13,13 @@ public interface ApproService {
 
 	int userPwCheck(MemberDTO dto);
 
-	MemberDTO loginChk(MemberDTO dto, HttpSession session);
+	MemberDTO loginChk(MemberDTO memberDto, HttpSession session);
 
 	int insert(BoardDTO board);
 
 	int Seq();
+
+	List<BoardDTO> list(BoardDTO boardDto, HttpSession session);
 
 
 }

@@ -1,5 +1,7 @@
 package com.study.project.dao.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -30,9 +32,9 @@ public class ApproDaoImpl implements ApproDao{
 
 
 	@Override
-	public MemberDTO loginChk(MemberDTO dto) {
+	public MemberDTO loginChk(MemberDTO memberDto) {
 		// TODO Auto-generated method stub
-		return sqlsession.selectOne("appro.loginChk", dto);
+		return sqlsession.selectOne("appro.loginChk", memberDto);
 	}
 
 
@@ -50,8 +52,11 @@ public class ApproDaoImpl implements ApproDao{
 	}
 
 
+	@Override
+	public List<BoardDTO> list(BoardDTO boardDto) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList("appro.list", boardDto);
 
-
-	
+	}
 
 }

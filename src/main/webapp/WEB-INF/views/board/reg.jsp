@@ -18,7 +18,6 @@
 		
 		
 			
-		})
 	})
 	
 </script>
@@ -51,16 +50,16 @@
 				<tr>
 					<th>작성자</th>
 					<td>
-						<input type = "text" name = "memberName" id = "memberName" value = "${detailMap.memberName }" readonly="readonly">
+						<input type = "text" name = "memberName" id = "memberName" value = "${memberName }" readonly="readonly">
 					</td>
 				</tr>
 				<tr>
 					<th>제목</th>
-					<td><input type = "text" name = "subject" id = "subject" value = "${detailMap.apprSubject }" placeholder="제목을 입력하세요" readonly="readonly"></td>
+					<td><input type = "text" name = "subject" id = "subject"  placeholder="제목을 입력하세요" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><textarea rows="5" cols="25" name = "content" id = "content" placeholder="내용을 입력하세요" readonly="readonly">${detailMap.apprContent }</textarea></td>
+					<td><textarea rows="5" cols="25" name = "content" id = "content" placeholder="내용을 입력하세요" readonly="readonly"></textarea></td>
 				</tr>
 			</table>
 		</div>

@@ -21,15 +21,31 @@
 		<collection property="memberDTO" resultMap="memberList"/>
 	</resultMap>
 	
+	<select id="list" resultMap="boardList">
+		select BOARD_NO
+			,BOARD_TITLE
+			,BOARD_REG_DATE
+			,BOARD_SIGN_DATE
+			,BOARD_APPROVER
+			,BOARD_SIGN_STATUS
+			,MEMBER_ID
+			,BOARD_CONTENT
+		from SOO_BOARD
+	</select>
+	
+	
+	
+	
+	
 	
 	<select id="userCheck"  parameterType="String" resultType="int">
-		select COUNT(*)
+		select COUNT(MEMBER_ID)
 		from SOO_MEMBER
 		where MEMBER_ID = #{memberId}
 	</select>
 	
 	<select id="userPw" parameterType="com.study.project.dto.MemberDTO" resultType="int">
-		select COUNT(*)
+		select COUNT(MEMBER_ID)
 		from SOO_MEMBER
 		where MEMBER_ID = #{memberId} and MEMBER_PW = #{memberPw}
 	</select>
@@ -38,6 +54,7 @@
 		select MEMBER_ID
 			  ,MEMBER_PW
 			  ,MEMBER_NAME
+			  ,decode(member_rank, 'aa', '부장','bb','과장') -->
 			  ,(CASE WHEN MEMBER_RANK = 'aa' THEN '부장' 
                     WHEN MEMBER_RANK = 'bb' THEN '과장'
                     WHEN MEMBER_RANK = 'cc' THEN '대리'

@@ -1,5 +1,7 @@
 package com.study.project.service.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -30,22 +32,20 @@ public class ApproServiceImpl implements ApproService{
 	}
 
 	@Override
-	public MemberDTO loginChk(MemberDTO dto, HttpSession session) {
+	public MemberDTO loginChk(MemberDTO memberDto, HttpSession session) {
 		// TODO Auto-generated method stub
-		MemberDTO member = approDao.loginChk(dto); 
+		MemberDTO member = approDao.loginChk(memberDto); 
 		if(member != null) { //세션 변수 저장
-			session.setAttribute("memberId", member.getMemberId());
-			session.setAttribute("memberName", member.getMemberName());
-			session.setAttribute("memberRank", member.getMemberRank());
+			session.setAttribute("member", member);
 		}
 		
 		return member;
 	}
 
 	@Override
-	public int insert(BoardDTO board) {
+	public int insert(BoardDTO boardDto) {
 		// TODO Auto-generated method stub
-		return approDao.insert(board);
+		return approDao.insert(boardDto);
 	}
 
 	@Override
@@ -53,6 +53,14 @@ public class ApproServiceImpl implements ApproService{
 		// TODO Auto-generated method stub
 		return approDao.seq();
 	}
+
+	@Override
+	public List<BoardDTO> list(BoardDTO boardDto, HttpSession session) {
+		// TODO Auto-generated method stub
+		System.out.println(boardDto);
+		return approDao.list(boardDto);
+	}
+
 
 
 

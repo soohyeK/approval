@@ -1,14 +1,8 @@
 package com.study.project.dto;
 
 import java.sql.Date;
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 public class BoardDTO {
 

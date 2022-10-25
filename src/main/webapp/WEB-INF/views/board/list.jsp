@@ -17,17 +17,17 @@
 	<form id="searchFrm" name="searchFrm">
 		<select name="opt" id="opt">
 			<option value="select">선택</option>
-			<option value="memName">작성자</option>
+			<option value="memberName">작성자</option>
 			<option value="boardPayer">결재자</option>
 			<option value="content">제목+내용</option>
 		</select>
 		<input type="text" id="txt" name="txt" placeholder="검색어를 입력하세요" autocomplete="off">
 		<select name="status" id="status">
-			<option value="payStatus">결재상태</option>
+			<option value="signStatus">결재상태</option>
 			<option value="save">임시저장</option>
-			<option value="waitng">결재대기</option>
-			<option value="ing">결재중</option>
-			<option value="completed">결재완료</option>
+			<option value="noSign">결재대기</option>
+			<option value="oneSign">결재중</option>
+			<option value="twoSign">결재완료</option>
 			<option value="reject">반려</option>
 		</select>
 		<br>
@@ -47,15 +47,15 @@
 				<td>결재자</td>
 				<td>결재상태</td>
 			</tr>
-		<c:forEach items="${list}" var="list" varStatus="num">
+		<c:forEach items="${list}" var="boardList">
 			<tr>
 				<td>${list.boardNo}</td>
-				<td>${list.memberDTO.memberName}</td>
+				<td>${list.memberName}</td>
 				<td><a href="${contextPath}/project/detail?boardNo=${list.boardNo}">${list.boardTitle}</a></td>
-				<td>${list.boardCreatedDate}</td>
-				<td>${list.boardPaymentDate}</td>
-				<td>${list.boardPayer}</td>
-				<td>${list.boardPaymentStatus}</td>
+				<td>${list.boardRegDate}</td>
+				<td>${list.boardSignDate}</td>
+				<td>${list.boardApprover}</td>
+				<td>${list.boardSignStatus}</td>
 			</tr>
 		</c:forEach>
 	</table>
