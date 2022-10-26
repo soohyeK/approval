@@ -21,7 +21,7 @@
 		<collection property="memberDTO" resultMap="memberList"/>
 	</resultMap>
 	
-	<select id="list" resultMap="boardList">
+	<select id="list" parameterType="com.study.project.dto.BoardDTO" resultMap="boardList">
 		select BOARD_NO
 			,BOARD_TITLE
 			,BOARD_REG_DATE
@@ -31,11 +31,8 @@
 			,MEMBER_ID
 			,BOARD_CONTENT
 		from SOO_BOARD
+		order by BOARD_NO
 	</select>
-	
-	
-	
-	
 	
 	
 	<select id="userCheck"  parameterType="String" resultType="int">
@@ -54,7 +51,6 @@
 		select MEMBER_ID
 			  ,MEMBER_PW
 			  ,MEMBER_NAME
-			  ,decode(member_rank, 'aa', '부장','bb','과장') -->
 			  ,(CASE WHEN MEMBER_RANK = 'aa' THEN '부장' 
                     WHEN MEMBER_RANK = 'bb' THEN '과장'
                     WHEN MEMBER_RANK = 'cc' THEN '대리'

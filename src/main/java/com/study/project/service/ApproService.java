@@ -19,7 +19,7 @@ public interface ApproService {
 
 	int Seq();
 
-	List<BoardDTO> list(BoardDTO boardDto, HttpSession session);
+	List<BoardDTO> list();
 
 
 }

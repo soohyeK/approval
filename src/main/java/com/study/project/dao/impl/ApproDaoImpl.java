@@ -53,9 +53,9 @@ public class ApproDaoImpl implements ApproDao{
 
 
 	@Override
-	public List<BoardDTO> list(BoardDTO boardDto) {
+	public List<BoardDTO> list() {
 		// TODO Auto-generated method stub
-		return sqlsession.selectList("appro.list", boardDto);
+		return sqlsession.selectList("appro.list");
 
 	}
 

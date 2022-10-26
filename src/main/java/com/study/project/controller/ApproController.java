@@ -1,5 +1,6 @@
 package com.study.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -68,9 +69,12 @@ public class ApproController {
 		if(session.getAttribute("member") == null) {
 			return "redirect:login";
 		}else {
-			//다시 매퍼랑 연결합시다~
-			List<BoardDTO> list = approService.list(boardDto, session);
+			List<BoardDTO> list = new ArrayList<BoardDTO>();
+			list = approService.list();
 			model.addAttribute("list", list);
+			model.addAttribute("member");
+			System.out.println("////////////" + list);
+			
 			return "board/list";
 		}
 	}

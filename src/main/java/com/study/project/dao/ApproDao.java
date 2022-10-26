@@ -17,6 +17,6 @@ public interface ApproDao {
 
 	int seq();
 
-	List<BoardDTO> list(BoardDTO boardDto);
+	List<BoardDTO> list();
 
 }

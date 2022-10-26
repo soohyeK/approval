@@ -55,10 +55,9 @@ public class ApproServiceImpl implements ApproService{
 	}
 
 	@Override
-	public List<BoardDTO> list(BoardDTO boardDto, HttpSession session) {
+	public List<BoardDTO> list() {
 		// TODO Auto-generated method stub
-		System.out.println(boardDto);
-		return approDao.list(boardDto);
+		return approDao.list();
 	}
 
 

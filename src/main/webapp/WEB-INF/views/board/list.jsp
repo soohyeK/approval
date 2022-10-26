@@ -47,15 +47,15 @@
 				<td>결재자</td>
 				<td>결재상태</td>
 			</tr>
-		<c:forEach items="${list}" var="boardList">
+		<c:forEach items="${boardList}" var="list">
 			<tr>
-				<td>${list.boardNo}</td>
-				<td>${list.memberName}</td>
-				<td><a href="${contextPath}/project/detail?boardNo=${list.boardNo}">${list.boardTitle}</a></td>
-				<td>${list.boardRegDate}</td>
-				<td>${list.boardSignDate}</td>
-				<td>${list.boardApprover}</td>
-				<td>${list.boardSignStatus}</td>
+				<td>${boardList.boardNo}</td>
+				<td>${boardList.memberId}</td>
+				<td><a href="${contextPath}/project/detail?boardNo=${boardList.boardNo}">${boardList.boardTitle}</a></td>
+				<td>${boardList.boardRegDate}</td>
+				<td>${boardList.boardSignDate}</td>
+				<td>${boardList.boardApprover}</td>
+				<td>${boardList.boardSignStatus}</td>
 			</tr>
 		</c:forEach>
 	</table>
